@@ -1,0 +1,31 @@
+<html>
+<head>
+  <style>
+  .no_bot {
+    background-color: green;
+  }
+  .bot {
+    background-color: red;
+  }
+  </style>
+</head>
+<body>
+<table>
+  <tr>
+    <td id="webdriver">webdriver</td>
+  </tr>
+</table>
+
+<script>
+function test_bot(id, test_result) {
+  if(test_bot) {
+    document.getElementById(id).className = "bot";
+  } else {
+    document.getElementById(id).className = "no_bot";
+  }
+}
+
+test_bot("webdriver", navigator.webdriver == true);
+</script>
+</body>
+</html>
