@@ -14,6 +14,9 @@
   <tr>
     <td id="webdriver">webdriver</td>
   </tr>
+  <tr>
+    <td id="selenium">selenium</td>
+  </tr>
 </table>
 
 <script>
@@ -24,8 +27,34 @@ function test_bot(id, test_result) {
     document.getElementById(id).className = "no_bot";
   }
 }
+function webdriver_presence(){
+  return (
+    'webdriver' in window |
+    '__webdriver_script_fn' in document |
+    '__driver_evaluate' in document |
+    '__webdriver_evaluate' in document |
+    '__fxdriver_evaluate' in document |
+    '__driver_unwrapped' in document |
+    '__webdriver_unwrapped' in document |
+    '__fxdriver_unwrapped' in document |
+    '__webdriver_script_func' in document |
+    document.documentElement.getAttribute("webdriver") !== null |
+    document.documentElement.getAttribute("driver") !== null
+  )
+}
+function selenium_presence() {
+  return (
+    '_Selenium_IDE_Recorder' in window |
+    'callSelenium' in window |
+    '_selenium' in window |
+    '__selenium_evaluate' in document |
+    '__selenium_unwrapped' in document |
+    document.documentElement.getAttribute("selenium") !== null
+  )
+}
 
-test_bot("webdriver", navigator.webdriver == true);
+test_bot("webdriver", webdriver_presence);
+test_bot("selenium", selenium_presence);
 </script>
 </body>
 </html>
