@@ -10,24 +10,25 @@
   </style>
 </head>
 <body>
+  <a href="/">click to refresh</a>
 <table>
   <tr>
-    <td id="webdriver">webdriver</td>
+    <td id="id_webdriver">webdriver</td>
   </tr>
   <tr>
-    <td id="selenium">selenium</td>
+    <td id="id_selenium">selenium</td>
   </tr>
   <tr>
-    <td id="phantom">phantom</td>
+    <td id="id_phantom">phantom</td>
   </tr>
   <tr>
-    <td id="nightmareJS">nightmareJS</td>
+    <td id="id_nightmareJS">nightmareJS</td>
   </tr>
 </table>
 
 <script>
 function test_bot(id, test_result) {
-  if(test_bot) {
+  if(test_result) {
     document.getElementById(id).className = "bot";
   } else {
     document.getElementById(id).className = "no_bot";
@@ -45,16 +46,16 @@ function phantom_presence(){
 }
 function webdriver_presence(){
   return (
-    'webdriver' in window |
-    '__webdriver_script_fn' in document |
-    '__driver_evaluate' in document |
-    '__webdriver_evaluate' in document |
-    '__fxdriver_evaluate' in document |
-    '__driver_unwrapped' in document |
-    '__webdriver_unwrapped' in document |
-    '__fxdriver_unwrapped' in document |
-    '__webdriver_script_func' in document |
-    document.documentElement.getAttribute("webdriver") !== null |
+    'webdriver' in window ||
+    '__webdriver_script_fn' in document ||
+    '__driver_evaluate' in document ||
+    '__webdriver_evaluate' in document ||
+    '__fxdriver_evaluate' in document ||
+    '__driver_unwrapped' in document ||
+    '__webdriver_unwrapped' in document ||
+    '__fxdriver_unwrapped' in document ||
+    '__webdriver_script_func' in document ||
+    document.documentElement.getAttribute("webdriver") !== null ||
     document.documentElement.getAttribute("driver") !== null
   );
 }
@@ -69,10 +70,10 @@ function selenium_presence() {
   );
 }
 
-test_bot("webdriver", webdriver_presence());
-test_bot("selenium", selenium_presence());
-test_bot("phantom", phantom_presence());
-test_bot("nightmareJS", nightmareJS_presence());
+test_bot("id_webdriver", webdriver_presence());
+test_bot("id_selenium", selenium_presence());
+test_bot("id_phantom", phantom_presence());
+test_bot("id_nightmareJS", nightmareJS_presence());
 </script>
 </body>
 </html>
